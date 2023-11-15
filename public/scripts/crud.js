@@ -14,14 +14,28 @@ function showDatos(datos) {
     }
 }
 
+// ERROR
+
+
 function showAlert() {
-    document.getElementById("alert-error").classList.add("show");
-    window.setTimeout(() => document.getElementById("alert-error").classList.remove("show"), 3000)
-     // Declarar resultsElement antes de usarla
-     let resultsElement = document.getElementById("results");
-     resultsElement.innerHTML = "";
-    resultsElement = document.getElementById("results").innerHTML = "";
+    // Obtén la referencia al elemento de alerta de error
+    let alertErrorElement = document.getElementById("alert-error");
+
+    // Agrega la clase "show" para mostrar el elemento
+    alertErrorElement.classList.add("show");
+
+    // Establece un temporizador para eliminar la clase "show" después de 3000 milisegundos (3 segundos)
+    setTimeout(() => {
+        alertErrorElement.classList.remove("show");
+    }, 3000);
+
+    // Declarar resultsElement antes de usarla
+    let resultsElement = document.getElementById("results");
+    
+    // Limpia el contenido del elemento results
+    resultsElement.innerHTML = "";
 }
+
 
 function validate() {
     
@@ -98,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("btnPut").addEventListener("click", () => {
         let id = document.getElementById("inputPutId").value
-        let nameInput = document.getElementById("inputPutNobre");
+        let nameInput = document.getElementById("inputPutNombre");
         let lastNameInput = document.getElementById("inputPutApellido");
         requestCRUD('GET', { id })
             .then((response) => {
